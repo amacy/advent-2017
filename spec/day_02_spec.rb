@@ -38,7 +38,17 @@ TXT
   end
 
   describe "part_2" do
-    it "works for the sample input"
-    it "works for the actual input"
+    it "works for the sample input" do
+      input = <<-TXT
+5 9 2 8
+9 4 7 3
+3 8 6 5
+      TXT
+      expect(Day02.new(input).part_2).to eq 9
+    end
+
+    it "works for the actual input" do
+      expect(Day02.new(input).part_2).to eq 333
+    end
   end
 end
