@@ -7,18 +7,25 @@ class Day01
     @sum = 0
   end
 
-  def process
+  def part_1(steps=1)
     @numbers.each_with_index do |n, index|
-      @sum += n.to_i if _equals_next_number?(n, index)
+      @sum += n.to_i if _equals_character_steps_ahead?(n, index, steps)
     end
     @sum
   end
 
-  def _equals_next_number?(n, index)
-    if index == @length - 1
-      n == @numbers[0]
+  def part_2
+    steps = @length / 2
+    part_1(steps)
+  end
+
+  def _equals_character_steps_ahead?(n, index, steps)
+    location = steps + index
+    if location >= @length
+      calculated_index = @length - location
+      n == @numbers[calculated_index.abs]
     else
-      n == @numbers[index + 1]
+      n == @numbers[location]
     end
   end
 end
